@@ -9,5 +9,4 @@
 	-->
 
 	<ndll name="steamwrap" />
-	<classpath name="steamwrap" />
 </project>

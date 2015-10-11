@@ -1,0 +1,25 @@
+<xml>
+
+	<set name="file_name" value="SteamWrap"/>
+	<set name="lib_name" value="steamwrap"/>
+	
+	<include name="${HXCPP}/build-tool/BuildCommon.xml"/>
+
+	<files id="common">
+		<compilerflag value="-Iinclude"/>
+		<file name="common/ExternalInterface.cpp"/>
+	</files>
+
+	<target id="NDLL" output="${LIBPREFIX}${lib_name}${debug_extra}${LIBEXTRA}" tool="linker" toolid="${STD_MODULE_LINK}">
+		<outdir name="../ndll/${BINDIR}"/>
+		<ext value=".ndll" if="windows || mac || linux" />
+		<files id="common"/>
+		<lib name="lib/libsteam_api.dylib" if="macos"/>
+		<lib name="lib/steam_api.lib" if="windows"/>
+	</target>
+
+	<target id="default">
+		<target id="NDLL" />
+	</target>
+
+</xml>
